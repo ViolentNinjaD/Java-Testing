@@ -32,5 +32,15 @@ public class GUI
 
         frame.setVisible(true);
 
+        JPanel panel = new JPanel();
+        frame.add(panel);
+        JButton closeButton = new JButton();
+        panel.setLayout(null);
+        panel.add(closeButton, BorderLayout.SOUTH);
+        closeButton.addActionListener(new ActionListeners.ActionClose());
+        closeButton.setBounds(325, 475, 150, 25);
+
+        String closeIconDir = Reference.APPDATA + "\\JavaTesting_CloseButtonIcon.png";
+        closeButton.setIcon(new ImageIcon(closeIconDir));
     }
 }

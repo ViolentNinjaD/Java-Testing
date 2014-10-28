@@ -13,4 +13,9 @@ public class Reference
 
     //Directories
     public static final String APPDATA = System.getenv("APPDATA");
+
+    public static final class Buttons
+    {
+        public static final String CLOSE = "Close";
+    }
 }
