@@ -4,6 +4,7 @@ import ninja.javatesting.reference.Reference;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 /*@author ViolentNinjaD
 
@@ -12,9 +13,9 @@ import java.awt.*;
 */
 public class GUI 
 {
+    public static JFrame frame = new JFrame(Reference.guiName);
     public static void showGUI()
     {
-        JFrame frame = new JFrame(Reference.guiName);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel emptyLabel = new JLabel("");
@@ -22,6 +23,14 @@ public class GUI
         frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
 
         frame.pack();
+
+        String iconDir = Reference.APPDATA + "\\JavaTesting_GUIimage.png";
+        System.out.println(iconDir);
+        File guiIcon = new File(iconDir);
+        ImageIcon imgIcon = new ImageIcon(iconDir);
+        frame.setIconImage(imgIcon.getImage());
+
         frame.setVisible(true);
+
     }
 }
