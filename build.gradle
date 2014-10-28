@@ -3,8 +3,16 @@ apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'maven'
 
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
 group = 'ninja.javatesting'
-version = 'T'
+version = config.appVersion
 mainClassName = 'ninja.javatesting.JavaTesting'
 archivesBaseName = 'JavaTesting-Ninja'
 
@@ -38,5 +46,13 @@ task writeNewPom << {
 jar {
     manifest {
         attributes("Main-Class": "ninja.javatesting.JavaTesting")
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: 'file://C:/Development/MavenRepository/maven'
+        }
     }
 }
